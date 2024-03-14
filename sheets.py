@@ -53,7 +53,7 @@ def get_values(spreadsheet_id, range_name):
         return error
 
 
-def update_data():
+if __name__ == "__main__":
     # Pass: spreadsheet_id, and range_name
     data = get_values('1SxDpFfGX6VsFucnUyCf8rcw_puSOWGK8EBw3aHHEj5s', 'A:R')['values']
     # Convert data into a dictionary list
