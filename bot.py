@@ -11,7 +11,7 @@ import pkmn
 
 
 load_dotenv()
-bot = discord.Bot()
+bot = discord.Bot(owner_id=717408952035573767)
 
 
 @bot.event

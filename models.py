@@ -37,9 +37,9 @@ class Main(discord.Embed):
 class ScoreTable(discord.Embed):
     def __init__(self, pokemon:pkmn.Pokemon):
         table = '''```
-╔════════╦═══════════╦════════╦═══════════╗
-║   Lv   ║   Score   ║   Lv   ║   Score   ║
-╠════════╬═══════════╬════════╬═══════════╣
+╔══════╦═════════╦══════╦═════════╗
+║  Lv  ║  Score  ║  Lv  ║  Score  ║
+╠══════╬═════════╬══════╬═════════╣
 '''
         for i in range(1, 16):
             if i+15 > 25:
@@ -48,16 +48,16 @@ class ScoreTable(discord.Embed):
                 else:
                     score = pokemon.base_score + pokemon.score_increase*(i-1)
                 score = ' '+str(score) if score < 100 else score
-                table += f"║   {i}   ║    {score}    ║        ║           ║\n"
+                table += f"║  {i}  ║   {score}   ║      ║         ║\n"
             else:
                 if pokemon.score_increase is None:
                     scores = [pokemon.base_score + constants.gacha_score[i-1], pokemon.base_score + constants.gacha_score[i+14]]
                 else: 
                     scores = [pokemon.base_score + pokemon.score_increase*(i-1), pokemon.base_score + pokemon.score_increase*(i+14)]
                 scores = [(' '+str(s) if s < 100 else s) for s in scores]
-                table += f"║   {'0' if i<10 else ''}{i}   ║    {scores[0]}    ║   {i+15}   ║    {scores[1]}    ║\n"
+                table += f"║  {'0' if i<10 else ''}{i}  ║   {scores[0]}   ║  {i+15}  ║   {scores[1]}   ║\n"
         
-        table += '╚════════╩═══════════╩════════╩═══════════╝\n```'
+        table += '╚══════╩═════════╩══════╩═════════╝\n```'
 
         super().__init__(title='Score Table', description=f'Pokémon: **{pokemon.name}**\n{table}')
 
